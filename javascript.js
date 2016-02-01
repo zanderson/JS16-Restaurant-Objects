@@ -18,7 +18,6 @@ var Gulyas = new FoodItem (
 	true
 	);
 
-console.log(Gulyas);
 
 FoodItem.prototype.stringify = function (){
 	return 'Our delicious ' + this.name + ' has only ' + this.calories + '. Diatery information: gluten free: ' + this.glutenFree + ', citrus free: ' + this.citrusFree + ', vegan: ' + this.vegan + '.'
@@ -39,9 +38,6 @@ var Hamburger = new FoodItem (
 	false,
 	true
 	);
-
-console.log(Sermale);
-console.log(Hamburger);
 
 // PART 2
 
@@ -88,7 +84,6 @@ var blodyMarry = new Drink(
 	7,
 	[vodka, tomatoJuice, celery]
 	)
-console.log(blodyMarry)
 
 // PLATES
 
@@ -172,9 +167,37 @@ Customer.prototype.stringify = function(){
 
 var valentin = new Customer({glutenFree : false, citrusFree : false, vegan : false})
 
+// PART 3
 
+Plate.prototype.isVegan = function(){
+	var result = true
+	this.ingredients.forEach( function(foodItem){
+		if (foodItem.vegan === false){
+			result = false
+		}
+	})
+	return result
+}
 
+Plate.prototype.isGlutenFree = function(){
+	var result = true
+	this.ingredients.forEach( function(foodItem){
+		if (foodItem.glutenFree === false){
+			result = false
+		}
+	})
+	return result
+}
 
+Plate.prototype.isCitrusFree = function(){
+	var result = true
+	this.ingredients.forEach( function(foodItem){
+		if (foodItem.citrusFree === false){
+			result = false
+		}
+	})
+	return result
+}
 
 
 
