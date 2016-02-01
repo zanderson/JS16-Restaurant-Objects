@@ -1,3 +1,7 @@
+// PART 1
+
+// FOODITEM
+
 var FoodItem = function(name, calories, vegan, glutenFree, citrusFree ){
 	this.name = name,
 	this.calories = calories,
@@ -38,5 +42,113 @@ var Hamburger = new FoodItem (
 
 console.log(Sermale);
 console.log(Hamburger);
+
+// PART 2
+
+// FOOD ITEMS
+
+var vodka = new FoodItem (
+	"Milagros Vodka",
+	100,
+	true,
+	true,
+	true
+	)
+var tomatoJuice = new FoodItem (
+	"Tomato Juice",
+	50,
+	true,
+	true,
+	true
+	)
+var celery = new FoodItem (
+	"Celery Stick",
+	10,
+	true,
+	true,
+	true
+	)
+
+//DRINKS
+
+var Drink = function(name, description, price, ingredients){
+	this.name 	= name,
+	this.description	= description,
+	this.price			= price,
+	this.ingredients	= ingredients
+}
+
+Drink.prototype.stringify = function(){
+	return "Try our " + this.name + ". " + this.description
+}
+
+var blodyMarry = new Drink(
+	"Blody Marry",
+	"An amazingly delicious coctail!",
+	7,
+	[vodka, tomatoJuice, celery]
+	)
+console.log(blodyMarry)
+
+// PLATES
+
+var Plate = function(name, description, price, ingredients){
+	this.name 	= name,
+	this.description	= description,
+	this.price			= price,
+	this.ingredients	= ingredients
+}
+
+Plate.prototype.stringify = function(){
+	return this.name + ". " + this.description
+}
+
+var euroPlate = new Plate("Euro Plate", "A delicious blend of European classics.", 100, [Gulyas, Sermale])
+var romanianPlate = new Plate("Romanian Plate", "A delicious blend of European classics.", 100, [Gulyas, Sermale])
+
+// ORDER
+
+var Order = function(platesArray) {
+	this.plates = platesArray
+}
+
+Order.prototype.stringify = function(){
+	var plates = []
+	this.plates.map( function(plateItem) {
+		plates.push(plateItem.name)
+	})
+	return plates.join(", ")
+}
+
+var zoeOrder = new Order([euroPlate, romanianPlate])
+
+// MENU 
+
+var Menu = function(platesArray) {
+	this.plates = platesArray
+}
+
+// RESTAURANT
+
+var Restaurant = function(name, description, menu) {
+	this.name		= name,
+	this.description = description,
+	this.menu 	= menu
+}
+
+// CUSTOMER
+
+var Customer = function(dietaryPreferences) {
+	this.dietaryPreferences = dietaryPreferences
+}
+
+
+
+
+
+
+
+
+
 
 
