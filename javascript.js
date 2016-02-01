@@ -128,6 +128,24 @@ var Menu = function(platesArray) {
 	this.plates = platesArray
 }
 
+var tuesdayMenu = new Menu([euroPlate, romanianPlate]);
+
+Menu.prototype.stringify = function(){
+	var plateNames = []
+	var plateDescriptions = []
+	var platePrices = []
+	var menuArray = []
+	this.plates.map( function(plateItem){
+		plateNames.push(plateItem.name)
+		plateDescriptions.push(plateItem.description)
+		platePrices.push(plateItem.price)
+	})
+	for(var i=0; i<plateNames.length; i++){
+		menuArray.push(plateNames[i] + ', ' + plateDescriptions[i] + ', $' + platePrices[i]);
+	}
+	return menuArray.join("\n")
+}
+
 // RESTAURANT
 
 var Restaurant = function(name, description, menu) {
@@ -136,11 +154,23 @@ var Restaurant = function(name, description, menu) {
 	this.menu 	= menu
 }
 
+Restaurant.prototype.stringify = function(){
+	return this.name + "\n" + this.description + "\n" + this.menu 
+}
+
+var zoesRestaurant = new Restaurant('Little Hungary', 'Traditional Homemade Food', tuesdayMenu.stringify());
+
 // CUSTOMER
 
 var Customer = function(dietaryPreferences) {
 	this.dietaryPreferences = dietaryPreferences
 }
+
+Customer.prototype.stringify = function(){
+		return "Customer is gluten free : " + this.dietaryPreferences.glutenFree + ", citrusFree :" + this.dietaryPreferences.citrusFree + ", vegan:" + this.dietaryPreferences.vegan;
+}
+
+var valentin = new Customer({glutenFree : false, citrusFree : false, vegan : false})
 
 
 
